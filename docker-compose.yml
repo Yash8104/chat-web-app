@@ -1,0 +1,33 @@
+networks:
+  microservices-net:
+    driver: bridge
+
+
+services:
+  eureka-server:
+    build: /eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-net
+    healthcheck: # Add a health check to wait for Eureka to be ready
+      test: [ "CMD", "wget", "--spider","-q", "http://localhost:8761" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always
+
+  api-gateway:
+    build: /api-gateway
+    container_name: api-gateway
+    ports:
+      - "9999:9999"
+
+    networks:
+      - microservices-net
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+
+    restart: always
