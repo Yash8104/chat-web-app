@@ -4,8 +4,6 @@ WORKDIR /app
 
 COPY target/*.jar chat-service.jar
 
-#TODO: change
-
-EXPOSE 8081
+EXPOSE 8082
 
 ENTRYPOINT ["java", "-jar", "chat-service.jar"]
