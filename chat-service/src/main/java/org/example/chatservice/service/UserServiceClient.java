@@ -2,13 +2,9 @@ package org.example.chatservice.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.chatservice.model.User;
-import org.example.chatservice.model.UserListDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
-
-import java.util.Objects;
 
 
 @Slf4j

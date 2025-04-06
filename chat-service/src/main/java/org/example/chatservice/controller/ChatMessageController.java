@@ -59,7 +59,6 @@ public class ChatMessageController {
 
 
         if (authentication == null) {
-            // User is not authenticated; redirect to login page (or handle as needed)
             return "redirect:/auth/login";
         }
 
